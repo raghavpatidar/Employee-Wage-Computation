@@ -9,12 +9,21 @@ public class App {
 
         int employeeType = isPresent();
 
-        if (employeeType == 1) {
-            System.out.println("Employee is FULL Time and it's Daily Wage is : " + calculateWage(FULL_TIME));
-        } else if (employeeType == 2) {
-            System.out.println("Employee is PART Time and it's Daily Wage is : " + calculateWage(PART_TIME));
-        } else
-            System.out.println("Employe is Absent  and it's Daily Wage is : " + calculateWage(0));
+        switch (employeeType) {
+            case 1:
+                System.out.println("Employee is FULL Time and it's Daily Wage is : " + calculateWage(FULL_TIME));
+                break;
+            case 2:
+                System.out.println("Employee is PART Time and it's Daily Wage is : " + calculateWage(PART_TIME));
+                break;
+            case 3:
+                System.out.println("Employe is Absent  and it's Daily Wage is : " + calculateWage(0));
+                break;
+
+            default:
+                System.out.println("This Person Is not An Employee");
+                break;
+        }
     }
 
     private static int calculateWage(int time) {
