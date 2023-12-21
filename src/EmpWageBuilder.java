@@ -76,6 +76,17 @@ public class EmpWageBuilder implements IEmployeeWageComputation {
         }
     }
 
+    @Override
+    public void getTotalWageByCompany(String name) {
+        for (CompanyEmpWage company : companies) {
+            if (company.equals(name)) {
+                System.out.println("Total wage of " + name + " " + company.getTotalWage());
+                return;
+            }
+        }
+        System.out.println("Company : " + name + " Not Found");
+    }
+
     private int calculateDailyWage(int time, int WAGE_PER_HOUR) {
         return WAGE_PER_HOUR * time;
     }

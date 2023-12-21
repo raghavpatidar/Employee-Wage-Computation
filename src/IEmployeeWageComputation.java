@@ -8,4 +8,6 @@ public interface IEmployeeWageComputation {
     public int computeEmployeWage(CompanyEmpWage company);
 
     public void computeWageForAllCompanies();
+
+    public void getTotalWageByCompany(String name);
 }

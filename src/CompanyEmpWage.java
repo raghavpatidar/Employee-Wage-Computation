@@ -49,4 +49,8 @@ public class CompanyEmpWage {
         return "Total Wage for Company: " + this.companyname + " is " + totalWage;
     }
 
+    public boolean equals(String name) {
+        return name.equalsIgnoreCase(this.companyname);
+    }
+
 }
