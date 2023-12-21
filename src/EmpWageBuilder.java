@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class EmpWageBuilder {
+public class EmpWageBuilder implements IEmployeeWageComputation {
     public static final int FULL_TIME = 1;
     public static final int PART_TIME = 2;
     public static final int ABSENT = 3;
@@ -13,6 +13,7 @@ public class EmpWageBuilder {
         this.companies = new ArrayList<>();
     }
 
+    @Override
     public int computeEmployeWage(CompanyEmpWage company) {
         System.out.println("Computing monthly wage for company: " + company.getCompanyname());
         int totalMonthWage = 0;
@@ -60,6 +61,7 @@ public class EmpWageBuilder {
         return totalMonthWage;
     }
 
+    @Override
     public void addCompanyEmpWage(String conpanyName, int wagePerHour, int workingDayInMonth, int totalWorkingHour) {
         CompanyEmpWage companyEmpWage = new CompanyEmpWage(conpanyName, wagePerHour, workingDayInMonth,
                 totalWorkingHour);
@@ -67,6 +69,7 @@ public class EmpWageBuilder {
         System.out.println("Company Added Successfully");
     }
 
+    @Override
     public void computeWageForAllCompanies() {
         for (CompanyEmpWage company : companies) {
             company.setTotalWage(this.computeEmployeWage(company));
