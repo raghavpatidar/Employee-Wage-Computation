@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class CompanyEmpWage {
 
     private String companyname;
@@ -5,13 +7,18 @@ public class CompanyEmpWage {
     private int WORKING_DAY_IN_MONTH;
     private int TOTAL_WORKING_HOUR;
     private int totalWage;
-    // public int ;
+    ArrayList<Integer> dailyWage;
 
     public CompanyEmpWage(String companyname, int wAGE_PER_HOUR, int wORKING_DAY_IN_MONTH, int tOTAL_WORKING_HOUR) {
         this.WAGE_PER_HOUR = wAGE_PER_HOUR;
         this.WORKING_DAY_IN_MONTH = wORKING_DAY_IN_MONTH;
         this.TOTAL_WORKING_HOUR = tOTAL_WORKING_HOUR;
         this.companyname = companyname;
+        this.dailyWage = new ArrayList<>();
+    }
+
+    public void addDailyWage(int wage) {
+        dailyWage.add(wage);
     }
 
     public void setTotalWage(int totalWage) {

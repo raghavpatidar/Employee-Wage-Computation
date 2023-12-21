@@ -21,43 +21,42 @@ public class EmpWageBuilder implements IEmployeeWageComputation {
         int workingHour = 0;
         while (workingDay < company.getWORKING_DAY_IN_MONTH() && workingHour < company.getTOTAL_WORKING_HOUR()) {
             int employeeType = isPresent();
+            int dailyWage = 0;
             switch (employeeType) {
                 case FULL_TIME:
-                    System.out.println(
-                            "Employee is FullTime DailyWage: "
-                                    + calculateDailyWage(FULL_TIME_HOUR, company.getWAGE_PER_HOUR()));
-                    totalMonthWage += calculateDailyWage(FULL_TIME_HOUR, company.getWAGE_PER_HOUR());
+                    dailyWage = calculateDailyWage(FULL_TIME_HOUR, company.getWAGE_PER_HOUR());
+                    System.out.println("Employee is FullTime DailyWage: " + dailyWage);
+                    totalMonthWage += dailyWage;
                     workingHour += FULL_TIME_HOUR;
                     workingDay++;
                     break;
+
                 case PART_TIME:
-                    System.out.println(
-                            "Employee is PartTime DailyWage: "
-                                    + calculateDailyWage(PART_TIME_HOUR, company.getWAGE_PER_HOUR()));
-                    totalMonthWage += calculateDailyWage(PART_TIME_HOUR, company.getWAGE_PER_HOUR());
+                    dailyWage = calculateDailyWage(PART_TIME_HOUR, company.getWAGE_PER_HOUR());
+                    System.out.println("Employee is PartTime DailyWage: " + dailyWage);
+                    totalMonthWage += dailyWage;
                     workingHour += PART_TIME_HOUR;
                     workingDay++;
                     break;
-                case ABSENT:
-                    System.out.println(
-                            "Employe is Absent DailyWage: " + calculateDailyWage(0, company.getWAGE_PER_HOUR()));
-                    break;
 
+                case ABSENT:
+                    System.out.println("Employe is Absent DailyWage: 0");
+                    break;
                 default:
                     System.out.println("This Person Is not An Employee");
                     break;
             }
-
+            company.addDailyWage(dailyWage);
             if (workingHour >= company.getTOTAL_WORKING_HOUR()) {
                 workingHour = company.getTOTAL_WORKING_HOUR();
                 break;
             }
-
         }
         System.out.println("Total Wage For Month : " + totalMonthWage);
         System.out.println("Total Time : " + workingHour);
         System.out.println("Total Days : " + workingDay + "\n");
         company.setTotalWage(totalMonthWage);
+        System.out.println("Daily Wage is " + company.dailyWage.toString());
         return totalMonthWage;
     }
 
