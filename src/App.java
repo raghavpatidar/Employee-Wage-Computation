@@ -9,5 +9,11 @@ public class App {
 
         empWageBuilder.computeWageForAllCompanies();
 
+        empWageBuilder.getTotalWageByCompany("companyA");
+        empWageBuilder.getTotalWageByCompany("companyB");
+        empWageBuilder.getTotalWageByCompany("companyC");
+        empWageBuilder.getTotalWageByCompany("companyD");
+        empWageBuilder.getTotalWageByCompany("companyE");
+
     }
 }
